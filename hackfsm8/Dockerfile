@@ -73,7 +73,14 @@ RUN su apprunnr && cd /var/tmp/hackfsm && bundle install
 #
 #             password:
 #
+# will do this with a script in /var/tmp/scripts/db-secret-substitution.sh
+# 
+# ADD a scripts dir containing said script to the Docker container
+# RUN chmod +x ...
+# RUN sh /var/tmp/scripts/db-secret-substitution.sh
 #
+# or something like that
+
 
 
 
