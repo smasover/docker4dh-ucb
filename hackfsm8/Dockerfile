@@ -26,15 +26,8 @@ RUN echo "mysql-server-5.5 mysql-server/root_password_again password `cat /var/t
 RUN echo "mysql-server-5.5 mysql-server/root_password password `cat /var/tmp/secrets/mysql-secret.txt`" | debconf-set-selections
 RUN apt-get -y install mysql-server
 #
-# in manually run script, MySQL is started here. This is pointless, tho, because
-#  Docker is still building an image and the start won't live beyond the current
-#  intermediate container ... so:
-#
-# DO THIS LATER #############################################
-#
-# RUN /etc/init.d/mysql start
-#
 # set up rvm for Ruby and gem management
+#
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN \curl -sSL https://get.rvm.io | bash -s stable
 RUN usermod -a -G rvm root
@@ -73,6 +66,29 @@ RUN su apprunnr && cd /var/tmp/hackfsm && bundle install
 ADD scripts/* /var/tmp/scripts/
 RUN chmod +x /var/tmp/scripts/*.sh
 RUN sh /var/tmp/scripts/db-secret-substitution.sh
+#
+# set up app (create and load db)
+#
+WORKDIR /var/tmp/hackfsm
+RUN /etc/init.d/mysql start && rake db:create db:schema:load db:seed
+#
+##########
+# WARNING: success of this step presupposes that app_info.dat has been
+#          modified on the host to include valid app-id and app-key for
+#          the API on which the Rails app being installed relies; this
+#          key is not and should not be committed to any repository!!
+##########
+#
+ADD config/app_info.dat /var/tmp/hackfsm/
+RUN grep REPLACE_ /var/tmp/hackfsm/app_info.dat && echo "===FAIL=== It is necessary to replace the contents of app_info.dat with valid appid and appkey on the host where this Dockerfile is run. DO NOT COMMIT these values to a code repository! ===FAIL===" || echo "Assuming appid and appkey are valid, we're in business!"
+#
+# now change user -- already in the correct WORKDIR -- and run the app
+#
+#
+# TBD
+#
+
+
 
 
 
