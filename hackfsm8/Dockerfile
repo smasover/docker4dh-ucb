@@ -82,11 +82,27 @@ RUN /etc/init.d/mysql start && rake db:create db:schema:load db:seed
 ADD config/app_info.dat /var/tmp/hackfsm/
 RUN grep REPLACE_ /var/tmp/hackfsm/app_info.dat && echo "===FAIL=== It is necessary to replace the contents of app_info.dat with valid appid and appkey on the host where this Dockerfile is run. DO NOT COMMIT these values to a code repository! ===FAIL===" || echo "Assuming appid and appkey are valid, we're in business!"
 #
-# now change user -- already in the correct WORKDIR -- and run the app
 #
 #
-# TBD
+EXPOSE 3000
+CMD /etc/init.d/mysql start && rails s
 #
+# tested, crudely, with:
+#  docker run -i -t -p 3000:3000 056c19067a35
+#
+# then in a separate terminal window:
+#
+#  wget localhost:3000
+#
+#
+###################################################
+#
+# TBD: a better startup, preferably as apprunnr; likely best solution
+#      will be a shell script that runs as root to start MySQL, then
+#      runs rails as apprunnr
+###################################################
+#
+
 
 
 
