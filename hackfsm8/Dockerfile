@@ -66,20 +66,16 @@ RUN cd /var/tmp; chown -R apprunnr hackfsm
 #
 RUN su apprunnr && cd /var/tmp/hackfsm && bundle install
 #
-#
-# next step is to append a space plus the content of 
-#  /var/tmp/secrets/mysql-secret.txt at the end
-#  of each line of config/database.yml that contains:
-#
-#             password:
-#
-# will do this with a script in /var/tmp/scripts/db-secret-substitution.sh
+# append mysql password contained in /var/tmp/secrets/mysql-secret.txt
+#  to the end of each line of config/database.yml that contains the token
+#  "password:" -- using a shell script copied into the Docker container
 # 
-# ADD a scripts dir containing said script to the Docker container
-# RUN chmod +x ...
-# RUN sh /var/tmp/scripts/db-secret-substitution.sh
-#
-# or something like that
+ADD scripts/* /var/tmp/scripts/
+RUN chmod +x /var/tmp/scripts/*.sh
+RUN sh /var/tmp/scripts/db-secret-substitution.sh
+
+
+
 
 
 
