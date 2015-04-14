@@ -2,14 +2,11 @@
 FROM ubuntu:14.04
 MAINTAINER Steve Masover "masover@berkeley.edu"
 
-RUN apt-get update
-
-RUN apt-get -y install curl
-RUN apt-get -y install wget
-
-RUN apt-get -y install debconf-utils
-RUN apt-get -y install libmysqlclient-dev
-RUN apt-get -y install git
+RUN apt-get update && apt-get install -y curl \
+  debconf-utils \
+  git \
+  libmysqlclient-dev \
+  wget
 #
 # cf. http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions
 #
@@ -24,7 +21,7 @@ RUN chmod 600 /var/tmp/secrets/mysql-secret.txt
 #
 RUN echo "mysql-server-5.5 mysql-server/root_password_again password `cat /var/tmp/secrets/mysql-secret.txt`" | debconf-set-selections
 RUN echo "mysql-server-5.5 mysql-server/root_password password `cat /var/tmp/secrets/mysql-secret.txt`" | debconf-set-selections
-RUN apt-get -y install mysql-server
+RUN apt-get update && apt-get install -y mysql-server
 #
 # set up rvm for Ruby and gem management
 #
@@ -102,14 +99,5 @@ CMD /etc/init.d/mysql start && rails s
 #      runs rails as apprunnr
 ###################################################
 #
-
-
-
-
-
-
-
-
-
 
 
