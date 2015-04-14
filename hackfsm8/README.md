@@ -21,7 +21,9 @@ This directory contains files that deploy the HackFSM Team #8 (2nd place winner)
 
 ## Steps to instantiate a Docker container for HackFSM Team #8 app (Rails)
 
-* Check out this project to local filesystem, e.g., `/var/tmp/docker`
+* Check out this project to local filesystem, e.g., `/var/tmp/`
+  * `cd /var/tmp`
+  * `git clone https://github.com/smasover/docker4dh-ucb`
 * Modify the file `config/app_info.dat` to include valid appid and appkey
 * Run the Dockerfile
 
