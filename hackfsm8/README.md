@@ -24,12 +24,14 @@ This directory contains files that deploy the HackFSM Team #8 (2nd place winner)
 * Check out this project to local filesystem, e.g., `/var/tmp/`
   * `cd /var/tmp`
   * `git clone https://github.com/smasover/docker4dh-ucb`
-* Modify the file `config/app_info.dat` to include valid appid and appkey
+* Modify the file `/var/tmp/docker4dh-ucb/hackfsm8/config/app_info.dat` to include valid appid and appkey
 * Run the Dockerfile
 
 ## Starting Docker to test
 
-(fill in this blank)
+* Crude test from the container's host (terminal window):
+  * `docker run -i -t -p 3000:3000 056c19067a35`
+  * `wget localhost:3000`
 
 ## Setting up redirection from host to Docker-exposed port
 
