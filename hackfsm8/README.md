@@ -11,12 +11,12 @@ This directory contains files that deploy the HackFSM Team #8 (2nd place winner)
 * Configure Linux firewall
 * Install Apache httpd
 * Install Docker
-** `sh -c "echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list"`
-** `apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9`
-** `apt-get update`
-** `apt-get install lxc-docker`
+  * `sh -c "echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list"`
+  * `apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9`
+  * `apt-get update`
+  * `apt-get install lxc-docker`
 * Install Git (if not already installed)
-** `apt-get install git`
+  * `apt-get install git`
 
 
 ## Steps to instantiate a Docker container for HackFSM Team #8 app (Rails)
