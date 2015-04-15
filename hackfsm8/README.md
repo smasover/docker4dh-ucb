@@ -2,7 +2,7 @@ This directory contains files that deploy the HackFSM Team #8 (2nd place winner)
 
 ## Steps to set up a Linode (or other server/VM to host Docker containers)
 
-See `README.md` in directory above this one: [github.com/smasover/docker4dh-ucb](github.com/smasover/docker4dh-ucb)
+See `README.md` in directory above this one.
 
 
 ## Steps to instantiate a Docker container for HackFSM Team #8 app (Rails)
