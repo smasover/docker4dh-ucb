@@ -94,9 +94,12 @@ CMD /etc/init.d/mysql start && rails s
 #
 ###################################################
 #
-# TBD: a better startup, preferably as apprunnr; likely best solution
-#      will be a shell script that runs as root to start MySQL, then
-#      runs rails as apprunnr
+# TBD: a better startup, preferably as apprunnr; a naive solution
+#      could be be a shell script that runs as root to start MySQL, then
+#      runs rails as apprunnr (but a first pass at that did not work); next cf.
+#      this and follow the path charted there:
+#
+#          http://www.yegor256.com/2014/08/29/docker-non-root.html
 #
 #      also, start as a service that survives closing of terminal
 #      from which container was instantiated
