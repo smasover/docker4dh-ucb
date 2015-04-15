@@ -12,6 +12,7 @@ See `README.md` in directory above this one.
   ```
   cd /var/tmp
   git clone https://github.com/smasover/docker4dh-ucb
+  ```
   
 ### Modify credentials file
 
@@ -27,7 +28,9 @@ Modify the file `/var/tmp/docker4dh-ucb/hackfsm8/config/app_info.dat` to include
 ## Starting Docker to test
 
 ### Crude test from the container's host (terminal window):
-  ```docker run -i -t -p 3000:3000 <CONTAINER_ID>
+
+  ```
+  docker run -i -t -p 3000:3000 <CONTAINER_ID>
   wget localhost:3000
   ```
 
