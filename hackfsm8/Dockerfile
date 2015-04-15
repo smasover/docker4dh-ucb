@@ -97,6 +97,9 @@ CMD /etc/init.d/mysql start && rails s
 # TBD: a better startup, preferably as apprunnr; likely best solution
 #      will be a shell script that runs as root to start MySQL, then
 #      runs rails as apprunnr
+#
+#      also, start as a service that survives closing of terminal
+#      from which container was instantiated
 ###################################################
 #
 

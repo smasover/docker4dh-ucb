@@ -30,7 +30,7 @@ This directory contains files that deploy the HackFSM Team #8 (2nd place winner)
 ## Starting Docker to test
 
 * Crude test from the container's host (terminal window):
-  * `docker run -i -t -p 3000:3000 056c19067a35`
+  * `docker run -i -t -p 3000:3000 <CONTAINER_ID>`
   * `wget localhost:3000`
 
 ## Setting up redirection from host to Docker-exposed port
