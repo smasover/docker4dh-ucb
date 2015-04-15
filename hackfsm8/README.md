@@ -23,7 +23,11 @@ Modify the file `/var/tmp/docker4dh-ucb/hackfsm8/config/app_info.dat` to include
   0123456789abcdef0123456789abcdef
   ```
   
-* Run the Dockerfile
+### Run the Dockerfile
+
+  ```
+  docker build .
+  ```
 
 ## Starting Docker to test
 
