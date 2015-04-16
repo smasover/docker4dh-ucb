@@ -81,29 +81,22 @@ RUN grep REPLACE_ /var/tmp/hackfsm/app_info.dat && echo "===FAIL=== It is necess
 #
 #
 #
+# ToDo (maybe): normalize (same user) for apprunnr (created here)
+#   and railsusr (created in app-startup.sh) ??
+#
+#                                               - SJM 16 Apr 2015
+#
+#
+#
 EXPOSE 3000
-CMD /etc/init.d/mysql start && rails s
+# CMD /etc/init.d/mysql start && rails s
+CMD /var/tmp/scripts/app-startup.sh
 #
 # tested, crudely, with:
-#  docker run -i -t -p 3000:3000 056c19067a35
+#  docker run -i -t -p 3000:3000 <CONTAINER ID>
 #
 # then in a separate terminal window:
 #
 #  wget localhost:3000
 #
-#
-###################################################
-#
-# TBD: a better startup, preferably as apprunnr; a naive solution
-#      could be be a shell script that runs as root to start MySQL, then
-#      runs rails as apprunnr (but a first pass at that did not work); next cf.
-#      this and follow the path charted there:
-#
-#          http://www.yegor256.com/2014/08/29/docker-non-root.html
-#
-#      also, start as a service that survives closing of terminal
-#      from which container was instantiated
-###################################################
-#
-
 
