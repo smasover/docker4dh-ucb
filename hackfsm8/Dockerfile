@@ -81,10 +81,9 @@ RUN grep REPLACE_ /var/tmp/hackfsm/app_info.dat && echo "===FAIL=== It is necess
 #
 #
 EXPOSE 3000
-# CMD /etc/init.d/mysql start && rails s
 CMD /var/tmp/scripts/app-startup.sh
 #
-# tested, crudely, with:
+# can be tested, crudely, with:
 #  docker run -i -t -p 3000:3000 <CONTAINER ID>
 #
 # then in a separate terminal window:
