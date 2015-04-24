@@ -46,7 +46,7 @@ RUN cd /var/tmp; git clone https://github.com/jasonk47/hackfsm.git
 # because Rails doesn't like a bundle install to be perfomed as root,
 #  create another user to run the app
 #
-RUN useradd -p $(openssl passwd -1 "$p") railsusr && railsusr railsusr rvm
+RUN useradd -p $(openssl passwd -1 "$p") railsusr && adduser railsusr rvm
 #
 # new user to own directory in which app has been cloned
 #
