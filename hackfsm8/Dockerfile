@@ -46,15 +46,15 @@ RUN cd /var/tmp; git clone https://github.com/jasonk47/hackfsm.git
 # because Rails doesn't like a bundle install to be perfomed as root,
 #  create another user to run the app
 #
-RUN useradd -p $(openssl passwd -1 "$p") apprunnr && adduser apprunnr rvm
+RUN useradd -p $(openssl passwd -1 "$p") railsusr && railsusr railsusr rvm
 #
 # new user to own directory in which app has been cloned
 #
-RUN cd /var/tmp; chown -R apprunnr hackfsm
+RUN cd /var/tmp; chown -R railsusr hackfsm
 #
 # run bundle install as new, non-root user
 #
-RUN su apprunnr && cd /var/tmp/hackfsm && bundle install
+RUN su railsusr && cd /var/tmp/hackfsm && bundle install
 #
 # append mysql password contained in /var/tmp/secrets/mysql-secret.txt
 #  to the end of each line of config/database.yml that contains the token
@@ -78,14 +78,6 @@ RUN /etc/init.d/mysql start && rake db:create db:schema:load db:seed
 #
 ADD config/app_info.dat /var/tmp/hackfsm/
 RUN grep REPLACE_ /var/tmp/hackfsm/app_info.dat && echo "===FAIL=== It is necessary to replace the contents of app_info.dat with valid appid and appkey on the host where this Dockerfile is run. DO NOT COMMIT these values to a code repository! ===FAIL===" || echo "Assuming appid and appkey are valid, we're in business!"
-#
-#
-#
-# ToDo (maybe): normalize (same user) for apprunnr (created here)
-#   and railsusr (created in app-startup.sh) ??
-#
-#                                               - SJM 16 Apr 2015
-#
 #
 #
 EXPOSE 3000
