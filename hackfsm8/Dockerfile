@@ -90,4 +90,10 @@ CMD /var/tmp/scripts/app-startup.sh
 #
 #  wget localhost:3000
 #
+#
+# Ultimately, this script and/or the Docker invocation 
+#  needs to be additionally modified so that the app runs 
+#  headless (in the background w/o need to keep a terminal
+#  window open on the Linux host).
+#
 
