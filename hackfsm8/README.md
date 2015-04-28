@@ -38,6 +38,13 @@ Modify the file `/var/tmp/docker4dh-ucb/hackfsm8/config/app_info.dat` to include
   wget localhost:3000
   ```
 
+ or, in headless mode:
+
+  ```
+  docker run -d -p 3000:3000 <CONTAINER_ID>
+  wget localhost:3000
+  ```
+
 ## Setting up redirection from host to Docker-exposed port
 
 (fill in this blank)
