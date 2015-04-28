@@ -86,14 +86,10 @@ CMD /var/tmp/scripts/app-startup.sh
 # can be tested, crudely, with:
 #  docker run -i -t -p 3000:3000 <CONTAINER ID>
 #
-# then in a separate terminal window:
+# or headless as:
+#  docker run -d -p 3000:3000 <CONTAINER ID>
+#
+# then in a host's terminal window:
 #
 #  wget localhost:3000
-#
-#
-# Ultimately, this script and/or the Docker invocation 
-#  needs to be additionally modified so that the app runs 
-#  headless (in the background w/o need to keep a terminal
-#  window open on the Linux host).
-#
 
