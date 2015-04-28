@@ -1,3 +1,9 @@
+# Overview
+
+![Digital Humanities Project Hosting using container-based multi-tenancy architecture](docs/DH-Project_ContainerizedMultitenancyArchitecture.png?raw-true "DH Project Hosting: container-based multi-tenancy architecture diagram)
+
+# Installation recipe for host server
+
 This directory contains files that enable deployment of various (Digital Humanities related) applications in Docker containers. This `README.md` file describes steps to set up a Linode (or other server/VM) to host those Docker containers.
 
 ## Optional
