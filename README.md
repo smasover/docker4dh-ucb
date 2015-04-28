@@ -1,6 +1,6 @@
 # Overview
 
-![Digital Humanities Project Hosting using container-based multi-tenancy architecture](docs/DH-Project_ContainerizedMultitenancyArchitecture.png?raw-true "DH Project Hosting: container-based multi-tenancy architecture diagram)
+![Digital Humanities Project Hosting using container-based multi-tenancy architecture](docs/DH-Project_ContainerizedMultitenancyArchitecture.png?raw=true "DH Project Hosting: container-based multi-tenancy architecture diagram")
 
 # Installation recipe for host server
 
