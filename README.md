@@ -40,7 +40,16 @@ Visit (http://www.webmin.com/deb.html) to assure that the commands below refer t
 
 ### Install Apache httpd
 
-(describe here)
+#### Install
+
+* Go to `Unused Modules` on the Webmin menu
+* Select the `Apache Webserver`
+* Click the `click here` link to install from Webmin
+* (Alternatively from the command line: `apt-get install apache2`)
+
+#### Configure
+
+* Enable the `proxy` and `proxy-http` modules. This will come into play when creating virtual hosts. (Using Webmin, go to `Global configuration` then `Configure Apache Modules`
 
 ### Install Docker
 
@@ -56,6 +65,24 @@ These instructions (for installing then testing the Docker installation) are cri
   ```
   $ apt-get install git
   ```
+## Each Docker-encapsulated app requires a VirtualServer in httpd
 
+As the heading says: each Docker-encapsulated application requires a VirtualServer in httpd. That VirtualServer intercepts a visitor's request to the application -- at, for example, the url `http://myproject.digitalhumanities.berkeley.edu` -- and redirects that request to the port used by the myproject Docker container for receiving requests.
+
+The example below assumes that a Docker container is listening on the host machine's port 43000.
+
+Webmin or the command line can be used to create a virtual server. Webmin is recommended (documentation [here](http://doxfer.webmin.com/Webmin/Apache_Webserver#Creating_a_new_virtual_host), tho you might prefer to click your way around, it's probably easier than reading the doc) -- unless the host admin is familiar with how virtual servers are laid out on the host OS's filesystem (e.g., [Ubuntu setup](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts) is different from RHEL); and prefers to go the manual route. 
+
+  ```
+   <VirtualHost *:80>
+     ProxyPreserveHost On
+
+     ProxyPass / http://0.0.0.0:43000/
+     ProxyPassReverse / http://0.0.0.0:43000/
+
+     ServerName myproject.digitalhumanities.berkeley.edu
+   </VirtualHost>
+
+  ```
 
 

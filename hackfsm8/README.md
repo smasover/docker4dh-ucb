@@ -26,6 +26,7 @@ Modify the file `/var/tmp/docker4dh-ucb/hackfsm8/config/app_info.dat` to include
 ### Run the Dockerfile
 
   ```
+  cd /var/tmp/docker4dh-ucb/hackfsm8
   docker build .
   ```
 
